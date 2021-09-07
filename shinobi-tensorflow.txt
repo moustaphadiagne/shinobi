@@ -1,1 +1,37 @@
-Installation de Shinobi et de tensor flow
+Installation de Shinobi et de tensor flow sur raspberry
+Les prerequis pour Shinobi sont:
+Node.js (12+), FFmpeg (3.3+), et MariaDB (10.4+) 
+se loguer en tant que root : sudo su
+Telecharger et executer l installateur :bash <(curl -s https://gitlab.com/Shinobi-Systems/Shinobi-Installer/raw/master/shinobi-install.sh)
+Se placer sur le repertoire : cd Shinobi
+entrer le mot de passe de mariadb
+Apres l installation lancer le navigateur http://adresseip:8080/super pour gerer l adminnistration
+mais si ca ne passe pas activer les deamons avec les commandes suivantes
+pm2 start camera.js
+pm2 start cron.js
+pm2 list
+
+pour les demarer automatiquement:
+pm2 startup
+pm2 save
+
+entrer les credentials 
+Username : admin@shinobi.video
+Password : admin
+puis ajouter un compte pour la gestion de shinobi
+aller a http://adresseip:8080 puis connecter vous avec le nouveau compte cree.
+
+le fichier de configuration est Shinobi/conf.json
+
+Se placer dans le dossier Shinobi/plugins/tensorflow
+taper sh INSTALL.sh
+node Shinobi-tensorflow.js
+
+apres le message Tensorflowplugin started on port 8082
+Tensorflow plugin connected to Shinobi
+cela veux dire que le plugin est installe
+pm2 restart camera pour redemarer shinobi
+
+pm2 start shinobi-tensorflow.js
+pm2 list 
+pm2 save
